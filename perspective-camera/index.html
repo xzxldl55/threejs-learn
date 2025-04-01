@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PerspectiveCamera</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 使用importmap映射依赖关系 -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "../threejs@0.174.0/three.module.js",
+                "orbitcontrols": "../threejs@0.174.0/orbitcontrols.js",
+                "data-gui": "../threejs@0.174.0/data-gui.js"
+            }
+        }
+    </script>
+    <script type="module" src="./index.js"></script>
+</body>
+</html>
