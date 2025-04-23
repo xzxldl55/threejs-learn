@@ -1,7 +1,18 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'orbitcontrols';
+import mesh from './ellipse.js';
+import mesh2 from './spline.js';
+import mesh3 from './bezier.js';
+import mesh4 from './cubic-bezier.js';
+import mesh5 from './curve-path.js';
 
 const scene = new THREE.Scene();
+// scene.add(mesh);
+// scene.add(mesh2.point);
+// scene.add(mesh2.line);
+// scene.add(mesh3);
+// scene.add(mesh4);
+scene.add(mesh5);
 
 const pointLight = new THREE.PointLight(0xffffff, 10000);
 pointLight.position.set(200, 200, 200);
