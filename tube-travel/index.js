@@ -24,7 +24,7 @@ renderer.setSize(width, height);
 let i = 0;
 function render() {
     // 从管道曲线中取 1000 个点，每次渲染时移动相机位置到一个点上，并看向下一个点，如此形成管道穿梭的效果
-    if (i < tubePoints.length) {
+    if (i < tubePoints.length - 1) {
         camera.position.copy(tubePoints[i]);
         camera.lookAt(tubePoints[i + 1]);
         // i++; // 修改为使用键盘下键操纵
