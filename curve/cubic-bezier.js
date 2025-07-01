@@ -19,7 +19,7 @@ const pointsList = curve.getPoints(20);
 const geometry = new THREE.BufferGeometry();
 geometry.setFromPoints(pointsList);
 
-const material = new THREE.LineBasicMaterial({ color: new THREE.Color('green')  });
+const material = new THREE.LineBasicMaterial({ color: new THREE.Color('green') });
 
 const line = new THREE.Line(geometry, material);
 

@@ -55,3 +55,38 @@
 - ArrowHelper：箭头辅助对象，可视化一个有方向的箭头，可以自定义进行箭头绘制用于标识方向
 
 - PolarGridHelper：极坐标网格辅助对象，可视化一个极坐标平面
+
+## 模型大小计算
+
+引入的模型，不同模型的大小都不同，如果想要对不同模型统一大小放置，则需要知道各个模型的大小，这个就涉及到包围盒的概念了，要计算模型的大小，就是计算它的最小包围盒的长宽高：
+
+Three.js 提供了计算包围盒的 api：
+
+1. 使用`new THREE.Box3()`
+
+```js
+const box = new THREE.Box3();
+
+const mesh = new THREE.Mesh(
+	new THREE.SphereGeometry(),
+	new THREE.MeshBasicMaterial()
+);
+
+// ensure the bounding box is computed for its geometry
+// this should be done only once (assuming static geometries)
+mesh.geometry.computeBoundingBox();
+
+// ...
+
+// in the animation loop, compute the current bounding box with the world matrix
+box.copy( mesh.geometry.boundingBox ).applyMatrix4( mesh.matrixWorld );
+```
+
+2. 使用`new THREE.BoxHelper(mesh, color)`可视化辅助查看包围盒
+
+```js
+const sphere = new THREE.SphereGeometry();
+const object = new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( 0xff0000 ) );
+const box = new THREE.BoxHelper( object, 0xffff00 );
+scene.add( box );
+```
