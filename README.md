@@ -90,3 +90,28 @@ const object = new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( 0xff0000 ) )
 const box = new THREE.BoxHelper( object, 0xffff00 );
 scene.add( box );
 ```
+
+Box3Helper：可视化 Box3 包围盒
+setFromObject：和 expandByObject 一样，计算对象和子对象的包围盒
+getSize：计算包围盒大小，不用自己计算
+expandByScalar：扩展包围盒
+intersectsBox：检测包围盒是否相交，可用来做碰撞检测
+intersect：计算相交部分大小
+union：计算并集大小
+getCenter：获取包围盒中心位置坐标
+
+## 相机
+
+### 1. 透视相机PespectiveCamera
+
+它符合人眼的规律，近大远小。
+
+![PespectiveCamera](./doc-assets/pespective-camera.png)
+
+### 2. 正投相机OrthographicCamera
+
+不管多远，看到的都一样大，它的范围就不需要角度啥的了，只需要 left、right、top、bottom、near、far 这 6 个值构成立方体。
+
+相比透视投影相机，正投影相机确实用的少，但是在计算阴影的时候，会用到正投影相机。
+
+![OrthographicCamera](./doc-assets/orthographic-camera.png)
