@@ -1,3 +1,6 @@
+/**
+ * 使用Ray穿过面，并通过intersectTriangle判断相交获取焦点
+ */
 import * as THREE from 'three';
 
 const geometry = new THREE.BufferGeometry();
@@ -20,6 +23,5 @@ mesh.add(arrowHelper)
 
 const point = new THREE.Vector3();
 ray.intersectTriangle(point1, point2, point3, false, point); // 获取射线与三角形的焦点
-console.log(point);
 
 export default mesh;

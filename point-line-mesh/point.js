@@ -19,7 +19,7 @@ geometry.attributes.position = attributes;
 
 // 使用点材质，设置点的大小为10
 const meterial = new THREE.PointsMaterial({
-    color: new THREE.Color('orange'),
+    color: new THREE.Color('green'),
     size: 10,
 });
 
