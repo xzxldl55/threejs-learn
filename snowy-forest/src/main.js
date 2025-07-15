@@ -3,11 +3,14 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import mountainside from './mountainside.js'
 import snow from './snow'
+import { Tween, Easing } from '@tweenjs/tween.js'
+import tube, { tubePoints } from './tube.js'
 
 const scene = new THREE.Scene();
 
 scene.add(mountainside);
 scene.add(snow)
+scene.add(tube)
 
 const directionLight = new THREE.DirectionalLight(0xffffff, 5);
 directionLight.position.set(1000, 2000, 1000);
@@ -30,7 +33,7 @@ scene.add(directionLight);
 const { innerWidth: width, innerHeight: height } = window
 
 const camera = new THREE.PerspectiveCamera(60, width / height, 100, 10000);
-camera.position.set(300, 300, 500);
+camera.position.set(1000, 300, 0);
 camera.lookAt(0, 0, 0);
 
 const renderer = new THREE.WebGLRenderer();
@@ -38,16 +41,41 @@ renderer.setSize(width, height)
 renderer.shadowMap.enabled = true // 开启阴影渲染
 renderer.setClearColor(new THREE.Color('blue'))
 
-let angle = 0;
-let r = 1000;
-function render() {
-    angle += 0.01;
+function tubeTraverAnimation(i = 0) {
+    if (i < tubePoints.length - 1) {
+        camera.position.copy(tubePoints[i])
+        camera.lookAt(tubePoints[i + 1])
+    }
+}
 
-    camera.position.x = r * Math.cos(angle);
-    camera.position.z = r * Math.sin(angle);
+function planeRotateAnimation() {
+    const r = 1000
+    const tween = new Tween({ angle: 0 })
+        .to({ angle: 360 }, 240000)
+        .repeat(Infinity)
+        .easing(Easing.Quadratic.InOut)
+        .onUpdate(obj => {
+            camera.position.x = r * Math.cos(obj.angle)
+            camera.position.z = r * Math.sin(obj.angle);
+            camera.lookAt(0, 0, 0);
+        })
 
-    camera.lookAt(0, 0, 0);
+    return tween
+}
+const rotateTween = planeRotateAnimation()
+let i = 0
+function render(time) {
+    if (i < tubePoints.length - 1) {
+        camera.position.copy(tubePoints[i])
+        camera.lookAt(tubePoints[i + 1])
+        i += 3
+    } else {
+        if (!rotateTween.isPlaying()) {
+            rotateTween.start()
+        }
+    }
 
+    rotateTween.update(time)
     renderer.render(scene, camera);
     requestAnimationFrame(render);
 }
@@ -56,4 +84,4 @@ render();
 
 document.body.append(renderer.domElement);
 
-const controls = new OrbitControls(camera, renderer.domElement);
+// const controls = new OrbitControls(camera, renderer.domElement);
