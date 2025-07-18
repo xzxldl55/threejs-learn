@@ -115,3 +115,10 @@ getCenter：获取包围盒中心位置坐标
 相比透视投影相机，正投影相机确实用的少，但是在计算阴影的时候，会用到正投影相机。
 
 ![OrthographicCamera](./doc-assets/orthographic-camera.png)
+
+## 动画Animation
+
+- KeyframeTrack
+- AnimationClip
+- AnimationMixer
+- AnimationAction
