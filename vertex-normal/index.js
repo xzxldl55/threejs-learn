@@ -4,7 +4,7 @@ import tube from './tube.js';
 import mesh from './mesh-normal.js';
 
 const scene = new THREE.Scene();
-// scene.add(tube);
+scene.add(tube);
 scene.add(mesh);
 
 const axesHelper = new THREE.AxesHelper(1000);

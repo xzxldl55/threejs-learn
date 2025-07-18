@@ -10,7 +10,7 @@ const scene = new THREE.Scene();
 
 scene.add(mountainside);
 scene.add(snow)
-scene.add(tube)
+// scene.add(tube)
 
 const directionLight = new THREE.DirectionalLight(0xffffff, 5);
 directionLight.position.set(1000, 2000, 1000);
