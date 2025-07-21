@@ -26,9 +26,9 @@ loader.load('./Michelle.glb', gltf => {
     // 可以使用关键帧动画来操作关节运动
     const tracker1 = new THREE.KeyframeTrack('mixamorigLeftShoulder.quaternion', [0, 3], [0, 0, 0, 0, 1.2, 0, 0, 0])
     const clip = new THREE.AnimationClip('zhuanShou', 3, [tracker1])
-    const gltfClip0 = gltf.animations[0]
     const mixer = new THREE.AnimationMixer(gltf.scene)
     const clipAction = mixer.clipAction(clip)
+    const gltfClip0 = gltf.animations[0]
     const gltfClipAction = mixer.clipAction(gltfClip0)
     // clipAction.play()
     gltfClipAction.play()

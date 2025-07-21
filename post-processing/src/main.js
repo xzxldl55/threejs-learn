@@ -59,6 +59,7 @@ render()
 const controls = new OrbitControls(camera, renderer.domElement)
 
 renderer.domElement.addEventListener('click', (e) => {
+  // 将屏幕坐标转换成ThreeJS的[-1, 1]的坐标
   const y = -((e.offsetY / height) * 2 - 1);
   const x = (e.offsetX / width) * 2 - 1;
 

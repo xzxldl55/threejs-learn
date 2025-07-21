@@ -33,11 +33,11 @@ renderer.setAnimationLoop(() => {
   renderer.render(scene, camera)
 })
 
-// function render () {
-//   renderer.render(scene, camera)
-//   requestAnimationFrame(render)
-// }
-// render()
+function render () {
+  renderer.render(scene, camera)
+  requestAnimationFrame(render)
+}
+render()
 
 document.body.append(renderer.domElement)
 
