@@ -20,7 +20,9 @@ const camera = new THREE.PerspectiveCamera(75, width / height, 1, 10000);
 camera.position.set(200, 200, 200);
 camera.lookAt(0, 0, 0);
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({
+    antialias: true
+});
 renderer.setSize(width, height);
 
 function render() {

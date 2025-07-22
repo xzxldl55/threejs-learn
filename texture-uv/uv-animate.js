@@ -11,7 +11,7 @@ texture.colorSpace = THREE.SRGBColorSpace;
 texture.wrapT = THREE.RepeatWrapping;
 texture.wrapS = THREE.RepeatWrapping;
 
-const geometry = new THREE.SphereGeometry(50);
+const geometry = new THREE.SphereGeometry(50, 100, 100);
 const material = new THREE.MeshBasicMaterial({
     map: texture
 });
