@@ -107,8 +107,8 @@ function createPieChart(data) {
 		mesh.angle = (startAngle + endAngle) / 2; // 记录中间位置角度，方便做点击交互
 
 		const label = createLabel(data[i].name + '' + data[i].value);
-		label.position.x = 200 * Math.cos(mesh.angle);
-		label.position.y = 200 * Math.sin(mesh.angle);
+		label.position.x = 400 * Math.cos(mesh.angle);
+		label.position.y = 400 * Math.sin(mesh.angle);
 		label.position.z = 150;
 		mesh.add(label);
 
