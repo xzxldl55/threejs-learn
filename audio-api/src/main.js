@@ -48,12 +48,14 @@ import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min';
 		audio.pause();
 		audio.play();
 	});
-	gui.add(obj, 'offset', 0, 150).onChange((value) => { // 调整进度
+	gui.add(obj, 'offset', 0, 150).onChange((value) => {
+		// 调整进度
 		audio.offset = value;
 		audio.pause();
 		audio.play();
 	});
-	gui.add(obj, 'detune', 0, 1000).onChange((value) => { // 调整音高
+	gui.add(obj, 'detune', 0, 1000).onChange((value) => {
+		// 调整音高
 		audio.detune = value;
 		audio.pause();
 		audio.play();
