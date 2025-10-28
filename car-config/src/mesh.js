@@ -31,7 +31,7 @@ loader.load('./car.glb', (gltf) => {
 				obj.material.color.set('white');
 				obj.material.transmission = 1; // 0.0 完全不透明，1.0 完全透明
 				obj.material.ior = 1.3416;
-                obj.material.metalness = 0.164
+                obj.material.metalness = 0.164 // 金属镀 --> 加一点有一种镀膜玻璃的感觉
 				win.addColor(obj.material, 'color');
 				win.add(obj.material, 'transmission', 0, 1);
 				win.add(obj.material, 'ior', 1, 2.3);
